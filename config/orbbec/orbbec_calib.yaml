@@ -1,0 +1,20 @@
+%YAML:1.0
+---
+model_type: PINHOLE
+camera_name: camera
+image_width: 848
+image_height: 480
+# max_depth: 8.0  # max accurate depth of rgbd camera
+# min_depth: 0.1  # min accurate depth of rgbd camera
+# depth_cov: 0.05 # depth measurement cov when depth = 1
+distortion_parameters:
+   k1: -0.03290300443768501
+   k2: 0.03494822978973389
+   p1: -0.00016445788787677884
+   p2: -2.1918178390478715e-05
+   
+projection_parameters:
+  fx: 406.9036560058594
+  fy: 406.8845520019531
+  cx: 422.4888610839844
+  cy: 234.09555053710938
