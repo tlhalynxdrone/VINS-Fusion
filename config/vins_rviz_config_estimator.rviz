@@ -6,7 +6,7 @@ Panels:
       Expanded:
         - /Global Options1
         - /VIOGroup1
-        - /VIOGroup1/PointCloud1/Status1
+        - /VIOGroup1/HistoryPointCloud1/Status1
         - /GlobalGroup1
         - /GlobalGroup1/CarModel1
       Splitter Ratio: 0.4651159942150116
@@ -205,12 +205,12 @@ Visualization Manager:
           Radius: 0.029999999329447746
           Shaft Diameter: 0.10000000149011612
           Shaft Length: 0.10000000149011612
-          Topic: /vins_node/path
+          Topic: /vins_estimator/path
           Unreliable: false
           Value: true
         - Class: rviz/MarkerArray
           Enabled: true
-          Marker Topic: /vins_node/camera_pose_visual
+          Marker Topic: /vins_estimator/camera_pose_visual
           Name: CameraMarker
           Namespaces:
             CameraPoseVisualization: true
@@ -239,7 +239,7 @@ Visualization Manager:
           Size (Pixels): 2
           Size (m): 0.009999999776482582
           Style: Points
-          Topic: /vins_node/point_cloud
+          Topic: /vins_estimator/point_cloud
           Unreliable: false
           Use Fixed Frame: true
           Use rainbow: true
@@ -267,14 +267,14 @@ Visualization Manager:
           Size (Pixels): 1
           Size (m): 0.009999999776482582
           Style: Points
-          Topic: /vins_node/margin_cloud
+          Topic: /vins_estimator/margin_cloud
           Unreliable: false
           Use Fixed Frame: true
           Use rainbow: true
           Value: true
         - Class: rviz/Image
           Enabled: true
-          Image Topic: /vins_node/image_track
+          Image Topic: /vins_estimator/image_track
           Max Value: 1
           Median window: 5
           Min Value: 0
@@ -348,7 +348,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/ThirdPersonFollower
-      Distance: 6.634963512420654
+      Distance: 4.521542072296143
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -364,9 +364,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.8797959685325623
+      Pitch: 0.009796662256121635
       Target Frame: world
-      Yaw: 3.2906150817871094
+      Yaw: 0.9506139755249023
     Saved: ~
 Window Geometry:
   Displays:
