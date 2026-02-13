@@ -4,19 +4,18 @@
 #imu_topic: "/imu"
 # stereo: 0
 imu: 1         
-num_of_cam: 2
+num_of_cam: 1
 
 imu_topic: "/imu/data"
 
 image0_topic: "/camera/color/image_raw"
-image1_topic: "/camera/image_raw"
-
+# image1_topic: "/camera/image_raw"
 depth0_topic: "/camera/depth/image_raw"
 
 output_path: "/home/tlha/missions/path/"
 
 cam0_calib: "orbbec_calib_640x480.yaml"
-cam1_calib: "webcam_calib_640x480.yaml"
+# cam1_calib: "webcam_calib_640x480.yaml"
 image_width: 640
 image_height: 480
 
@@ -30,25 +29,17 @@ body_T_cam0: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [ -0.21237641904705395, -0.9767540238766452, 0.02911758014552035, 0.10691900299821919,  
-         -0.18871872348665836, 0.011760469148430208, -0.9819607603010283, 0.0786549908174568,
-            0.9587916875100216, -0.21404034247353815, -0.18682941887051463, 0.9148950825532969,
-           0.0000000,   0.0000000,   0.0000000,   1.0000000]
+   data: [ -0.21237642, -0.18871872,  0.95879169, 0, 
+            -0.97675402,  0.01176047, -0.21404034,  0,
+               0.02911758, -0.98196076, -0.18682942,  0,
+            0.0000000,   0.0000000,   0.0000000,   1.0000000]
 
-body_T_cam1: !!opencv-matrix
-   rows: 4
-   cols: 4
-   dt: d
-   data: [ 0.07142160114556076, 0.9971961766788189, -0.022332489940681655, 0.08260109251072587,  
-            0.6892691909613307, -0.06552613008487959, -0.7215360757908177, -0.1964996474509253,
-            -0.7209763777554141, 0.03614016454369917, -0.6920165830566758, 0.6506025872061035,     
-             0.0000000,    0.0000000,  0.0000000,   1.0000000]
 
 
 multiple_thread: 1
 #feature traker paprameters
-max_cnt: 150           #200   # max feature number in feature tracking
-min_dist: 30                 # min distance between two features
+max_cnt: 200           #200   # max feature number in feature tracking
+min_dist: 10                 # min distance between two features
 freq: 10              #10    # frequence (Hz) of publish tracking result. At least 10Hz for good estimation. If set 0, the frequence will be same as raw image
 F_threshold: 1.0              # ransac threshold (pixel)
 show_track: 1         #1     # publish tracking image as topic
