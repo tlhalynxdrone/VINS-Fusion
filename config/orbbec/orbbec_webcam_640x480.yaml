@@ -2,19 +2,21 @@
 
 #common parameters
 #imu_topic: "/imu"
+stereo: 0
 imu: 1         
-num_of_cam: 1
+num_of_cam: 2
 
 imu_topic: "/imu/data"
 image0_topic: "/camera/color/image_raw"
 depth0_topic: "/camera/depth/image_raw"
+image1_topic: "/camera/image_raw"
 output_path: "/home/tlha/missions/path/"
-
-cam0_calib: "orbbec_calib.yaml"
-image_width: 848
+cam0_calib: "orbbec_calib_640x480.yaml"
+cam1_calib: "webcam_calib_640x480.yaml"
+image_width: 640
 image_height: 480
 # Extrinsic parameter between IMU and Camera.
-estimate_extrinsic: 0   # 0  Have an accurate extrinsic parameters. We will trust the following imu^R_cam, imu^T_cam, don't change it.
+estimate_extrinsic: 1   # 0  Have an accurate extrinsic parameters. We will trust the following imu^R_cam, imu^T_cam, don't change it.
                         # 1  Have an initial guess about extrinsic parameters. We will optimize around your initial guess.
                         # 2  Don't know anything about extrinsic parameters. You don't need to give R,T. We will try to calibrate it. Do some rotation movement at beginning.                        
 #If you choose 0 or 1, you should write down the following matrix.
@@ -23,27 +25,32 @@ body_T_cam0: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [   0.999987, 0.00449906, -0.00234236,  2.4891622995410492e-02,
-          -0.00449987, 0.99999,    -0.000339764, 2.2226077744216536e-02,
-           0.00234081, 0.0003503,   0.999997,    8.1551497059250813e-02,
-           0.0000000,  0.0000000,   0.0000000,   1.0000000]
-   # data: [0.40416916, 0.85759197, 0.31809323, -0.04733739,
-   #        0.91380406, -0.39383006, -0.09929768,  0.03256289,
-   #       0.04011778, 0.33080794, -0.94284499,  0.25449358, 
-   #          0., 0., 0., 1.]
+   data: [ -0.21237641904705395, -0.9767540238766452, 0.02911758014552035, 0.10691900299821919,  
+         -0.18871872348665836, 0.011760469148430208, -0.9819607603010283, 0.0786549908174568,
+            0.9587916875100216, -0.21404034247353815, -0.18682941887051463, 0.9148950825532969,
+           0.0000000,   0.0000000,   0.0000000,   1.0000000]
 
-#  0.103, -0.048, -0.014
+body_T_cam1: !!opencv-matrix
+   rows: 4
+   cols: 4
+   dt: d
+   data: [ 0.07142160114556076, 0.9971961766788189, -0.022332489940681655, 0.08260109251072587,  
+            0.6892691909613307, -0.06552613008487959, -0.7215360757908177, -0.1964996474509253,
+            -0.7209763777554141, 0.03614016454369917, -0.6920165830566758, 0.6506025872061035,     
+             0.0000000,    0.0000000,  0.0000000,   1.0000000]
+
+multiple_thread: 1
 #feature traker paprameters
 max_cnt: 200           #200   # max feature number in feature tracking
-min_dist: 20                 # min distance between two features
+min_dist: 10                 # min distance between two features
 freq: 10              #10    # frequence (Hz) of publish tracking result. At least 10Hz for good estimation. If set 0, the frequence will be same as raw image
 F_threshold: 1.0              # ransac threshold (pixel)
 show_track: 1         #1     # publish tracking image as topic
 flow_back: 1             # perform forward and backward optical flow to improve feature tracking accuracy
-equalize: 0            #0     # if image is too dark or light, trun on equalize to find enough features
+equalize: 1            #0     # if image is too dark or light, trun on equalize to find enough features
 fisheye: 0             #0     # if using fisheye, trun on it. A circle mask will be loaded to remove edge noisy points
 use_fast: 1                   # if it equals to 1, we extract and track fast feature, otherwise we use GFTT from opencv
-use_rgbd: 0            #0     # if using rgbd camera, turn on it. Depth residuals will be added to sliding window optimization and initialization
+use_rgbd: 1           #0     # if using rgbd camera, turn on it. Depth residuals will be added to sliding window optimization and initialization
 min_fast_resp: 7              # min response of fast feature
 
 
@@ -54,15 +61,15 @@ keyframe_parallax: 10.0       # keyframe selection threshold (pixel)
 reproj_threshold: 5.0
 
 #imu parameters       The more accurate parameters you provide, the better performance
-acc_n: 0.1          # accelerometer measurement noise standard deviation. #0.2
-gyr_n: 0.01         # gyroscope measurement noise standard deviation.     #0.05
-acc_w: 0.0002         # accelerometer bias random work noise standard deviation.  #0.02
-gyr_w: 2.0e-5       # gyroscope bias random work noise standard deviation.     #4.0e-5
+acc_n: 0.2          # accelerometer measurement noise standard deviation. #0.2
+gyr_n: 0.02         # gyroscope measurement noise standard deviation.     #0.05
+acc_w: 0.001         # accelerometer bias random work noise standard deviation.  #0.02
+gyr_w: 2.0e-4       # gyroscope bias random work noise standard deviation.     #4.0e-5
 g_norm: 9.805       # gravity magnitude
 
 #loop closure parameters
-# loop_closure: 0                    # start loop closure
-# fast_relocalization: 0             # useful in real-time and large project
+loop_closure: 1                    # start loop closure
+fast_relocalization: 0             # useful in real-time and large project
 load_previous_pose_graph: 0        # load and reuse previous pose graph; load from 'pose_graph_save_path'
 pose_graph_save_path: "/home/tlha/missions/pose_graph/" # save and load path
 save_image: 0                   # save image in pose graph for visualization prupose; you can close this function by setting 0 
@@ -76,6 +83,6 @@ td: 0                           # initial value of time offset. unit: s. readed 
 # rolling_shutter_tr: 0.033               # unit: s. rolling shutter read out time per frame (from data sheet). 
 
 #visualization parameters
-save_image: 0                   # save image in pose graph for visualization prupose; you can close this function by setting 0 
-visualize_imu_forward: 0        # output imu forward propogation to achieve low latency and high frequence results
-visualize_camera_size: 0.4      # size of camera marker in RVIZ
+# save_image: 0                   # save image in pose graph for visualization prupose; you can close this function by setting 0 
+# visualize_imu_forward: 0        # output imu forward propogation to achieve low latency and high frequence results
+# visualize_camera_size: 0.4      # size of camera marker in RVIZ
