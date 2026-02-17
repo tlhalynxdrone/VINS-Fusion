@@ -86,12 +86,12 @@ void sync_process()
                 if(time0 < time1 - 0.003)
                 {
                     img0_buf.pop();
-                    printf("throw img0\n");
+                    printf("throw img0: %f %f\n", time0, time1);
                 }
                 else if(time0 > time1 + 0.003)
                 {
                     img1_buf.pop();
-                    printf("throw img1\n");
+                    printf("throw img1: %f %f\n", time0, time1);
                 }
                 else
                 {

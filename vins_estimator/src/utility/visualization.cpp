@@ -114,9 +114,21 @@ void printStatistics(const Estimator &estimator, double t)
     ROS_DEBUG("vo solver costs: %f ms", t);
     ROS_DEBUG("average of time %f ms", sum_of_time / sum_of_calculation);
 
-    sum_of_path += (estimator.Ps[WINDOW_SIZE] - last_path).norm();
-    last_path = estimator.Ps[WINDOW_SIZE];
-    ROS_DEBUG("sum of path %f", sum_of_path);
+    // sum_of_path += (estimator.Ps[WINDOW_SIZE] - last_path).norm();
+    // last_path = estimator.Ps[WINDOW_SIZE];
+    // ROS_DEBUG("sum of path %f", sum_of_path);
+    Vector3d current_position = estimator.Ps[WINDOW_SIZE];
+
+    double delta = (current_position - last_path).norm();
+
+    if (last_path.norm() > 1e-6)  // avoid first frame jump
+    {
+        sum_of_path += delta;
+        ROS_INFO("Frame distance: %.4f m | Total distance: %.4f m",
+                delta, sum_of_path);
+    }
+
+last_path = current_position;
     if (ESTIMATE_TD)
         ROS_INFO("td %f", estimator.td);
 }

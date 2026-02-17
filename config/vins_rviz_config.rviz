@@ -29,7 +29,7 @@ Panels:
   - Class: rviz/Time
     Name: Time
     SyncMode: 0
-    SyncSource: ""
+    SyncSource: PointCloud
   - Class: rviz/Displays
     Help Height: 78
     Name: Displays
@@ -214,7 +214,7 @@ Visualization Manager:
           Marker Topic: /vins_node/camera_pose_visual
           Name: CameraMarker
           Namespaces:
-            {}
+            CameraPoseVisualization: true
           Queue Size: 100
           Value: true
         - Alpha: 1
@@ -341,7 +341,7 @@ Visualization Manager:
       Visual Enabled: true
   Enabled: true
   Global Options:
-    Background Color: 238; 238; 236
+    Background Color: 0; 0; 0
     Default Light: true
     Fixed Frame: world
     Frame Rate: 30
@@ -365,7 +365,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/ThirdPersonFollower
-      Distance: 1.0078672170639038
+      Distance: 1.665724754333496
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -381,9 +381,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.8797962665557861
+      Pitch: 0.9997961521148682
       Target Frame: world
-      Yaw: 4.8987812995910645
+      Yaw: 5.313787460327148
     Saved: ~
 Window Geometry:
   Displays:
@@ -402,7 +402,7 @@ Window Geometry:
     collapsed: true
   Width: 1200
   X: 2487
-  Y: 315
+  Y: 197
   loop_match_Image:
     collapsed: false
   track_image:
