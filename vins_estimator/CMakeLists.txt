@@ -21,14 +21,15 @@ find_package(OpenCV REQUIRED)
 
 find_package(Ceres REQUIRED)
 
-include_directories(${catkin_INCLUDE_DIRS} ${CERES_INCLUDE_DIRS})
+include_directories(
+    ${catkin_INCLUDE_DIRS} 
+    ${CERES_INCLUDE_DIRS}
+    ${CMAKE_CURRENT_SOURCE_DIR}/../camera_model/include
+)
 
 set(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
 find_package(Eigen3)
-include_directories(
-  ${catkin_INCLUDE_DIRS}
-  ${EIGEN3_INCLUDE_DIR}
-)
+
 
 catkin_package()
 
@@ -60,7 +61,6 @@ target_link_libraries(kitti_odom_test vins_lib)
 
 add_executable(kitti_gps_test src/KITTIGPSTest.cpp)
 target_link_libraries(kitti_gps_test vins_lib) 
-
 
 add_executable(rim_recorder src/rimRecorder.cpp)
 target_link_libraries(rim_recorder vins_lib) 
