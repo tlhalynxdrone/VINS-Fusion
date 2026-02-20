@@ -10,14 +10,13 @@ imu_topic: "/imu/data"
 
 image0_topic: "/camera/color/image_raw"
 image1_topic: "/camera/left_ir/image_raw"
-image2_topic: "/camera/right_ir/image_raw"
 # depth0_topic: "/camera/depth/image_raw"
 
 output_path: "/home/tlha/missions/path/"
 
 cam0_calib: "orbbec_calib_640x480_color.yaml"
 cam1_calib: "orbbec_calib_640x480_left_ir.yaml"
-cam2_calib: "orbbec_calib_640x480_right_ir.yaml"
+
 
 image_width: 640
 image_height: 480
@@ -32,35 +31,25 @@ body_T_cam0: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [ -0.02898425, -0.99872756,  0.04126947,  0.06373207,  
-         -0.54457504, -0.01884434, -0.8385004,  -0.03041362,
-            0.83821116, -0.04677763, -0.54333591,  0.95812093,
-           0.0000000,   0.0000000,   0.0000000,   1.0000000]
+   data: [ -0.21237642, -0.18871872,  0.95879169, 0.099, 
+            -0.97675402,  0.01176047, -0.21404034,  -0.024,
+               0.02911758, -0.98196076, -0.18682942,  -0.014,
+            0.0000000,   0.0000000,   0.0000000,   1.0000000]
 
 body_T_cam1: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [ -0.03107823, -0.54547389,  0.83755142, -0.81628805,  
-            -0.99881993, -0.01434019, -0.04640163, 0.13172693,
-            0.03732152, -0.83800513, -0.54438453, 0.49134422,     
-             0.0000000,    0.0000000,  0.0000000,   1.0000000]
-
-
-body_T_cam2: !!opencv-matrix
-   rows: 4
-   cols: 4
-   dt: d
-   data: [ -0.03427865, -0.54584298,  0.83718601, -0.81878467,  
-            -0.99863715, -0.01427892, -0.05019909, 0.03672023,
-             0.03935493, -0.83776581, -0.54460962, 0.49469715,     
-             0.0000000,    0.0000000,  0.0000000,   1.0000000]
+   data: [ -0.21237642, -0.18871872,  0.95879169, 0.099, 
+            -0.97675402,  0.01176047, -0.21404034,  -0.0475,
+               0.02911758, -0.98196076, -0.18682942,  -0.014,
+            0.0000000,   0.0000000,   0.0000000,   1.0000000]
 
 
 multiple_thread: 1
 #feature traker paprameters
-max_cnt: 150           #200   # max feature number in feature tracking
-min_dist: 30                 # min distance between two features
+max_cnt: 300           #200   # max feature number in feature tracking
+min_dist: 10                 # min distance between two features
 freq: 10              #10    # frequence (Hz) of publish tracking result. At least 10Hz for good estimation. If set 0, the frequence will be same as raw image
 F_threshold: 1.0              # ransac threshold (pixel)
 show_track: 1         #1     # publish tracking image as topic

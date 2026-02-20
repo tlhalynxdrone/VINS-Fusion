@@ -36,7 +36,7 @@ class RimRecorder
 public:
     RimRecorder(ros::NodeHandle &nh)
     {
-        odom_sub_ = nh.subscribe("/vins_node/odometry", 1000, &RimRecorder::odomCallback, this);
+        odom_sub_ = nh.subscribe("/vins_estimator/odometry", 1000, &RimRecorder::odomCallback, this);
         recording_active_ = true;
         ROS_INFO("RimRecorder started. Press Enter to record a point, Spacebar to finish.");
     }
