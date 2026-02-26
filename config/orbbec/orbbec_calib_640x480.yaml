@@ -5,17 +5,11 @@ camera_name: camera
 image_width: 640
 image_height: 480
 
-distortion_model: RATIONAL_POLYNOMIAL
-
 distortion_parameters:
    k1: -0.03290300443768501
    k2: 0.03494822978973389
    p1: -0.00016445788787677884
    p2: -2.1918178390478715e-05
-   k3: -0.012158403173089027
-   k4: 0.0
-   k5: 0.0
-   k6: 0.0
 
 projection_parameters:
    fx: 368.2386169433594

@@ -27,10 +27,10 @@ body_T_cam0: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [  0.00456087, -0.01966287,  0.99979626,  0.11987105, 
-            -0.9999821,  -0.00396099,  0.00448382,  0.0296931,
-            0.00387201, -0.99979882, -0.01968058, -0.00048338,
-            0.0000000,   0.0000000,   0.0000000,   1.0000000]
+   data: [   0.00407273, -0.02038577,  0.99978389,  0.12030095, 
+            -0.99997843, -0.00523551,  0.00396677,  0.02875755,
+             0.00515351, -0.99977848, -0.02040665, -0.00308228,
+              0.0000000,   0.0000000,   0.0000000,   1.0000000]
 
 multiple_thread: 1
 #feature traker paprameters
@@ -48,7 +48,7 @@ min_fast_resp: 7              # min response of fast feature
 
 
 #optimization parameters
-max_solver_time: 0.08         # max solver itration time (ms), to guarantee real time
+max_solver_time: 0.04         # max solver itration time (ms), to guarantee real time
 max_num_iterations: 8      #8   # max solver itrations, to guarantee real time
 keyframe_parallax: 10.0       # keyframe selection threshold (pixel)
 reproj_threshold: 5.0
@@ -74,7 +74,7 @@ save_image: 0                   # save image in pose graph for visualization pru
 
 #unsynchronization parameters
 estimate_td: 1                      # online estimate time offset between camera and imu
-td: -0.02525464172208901                           # initial value of time offset. unit: s. readed image clock + td = real image clock (IMU clock)
+td: -0.025279461378071875                           # initial value of time offset. unit: s. readed image clock + td = real image clock (IMU clock)
 
 #rolling shutter parameters
 # rolling_shutter: 0                      # 0: global shutter camera, 1: rolling shutter camera
