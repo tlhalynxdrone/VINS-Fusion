@@ -10,7 +10,7 @@ imu_topic: "/imu/data"
 
 image0_topic: "/camera/color/image_raw"
 depth0_topic: "/camera/depth/image_raw"
-output_path: "/home/tlha/missions/path/"
+output_path: "/home/orin2/missions/path/"
 
 cam0_calib: "orbbec_calib_640x480.yaml"
 
@@ -18,7 +18,7 @@ image_width: 640
 image_height: 480
 
 # Extrinsic parameter between IMU and Camera.
-estimate_extrinsic: 0   # 0  Have an accurate extrinsic parameters. We will trust the following imu^R_cam, imu^T_cam, don't change it.
+estimate_extrinsic: 1   # 0  Have an accurate extrinsic parameters. We will trust the following imu^R_cam, imu^T_cam, don't change it.
                         # 1  Have an initial guess about extrinsic parameters. We will optimize around your initial guess.
                         # 2  Don't know anything about extrinsic parameters. You don't need to give R,T. We will try to calibrate it. Do some rotation movement at beginning.                        
 #If you choose 0 or 1, you should write down the following matrix.
@@ -34,9 +34,9 @@ body_T_cam0: !!opencv-matrix
 
 multiple_thread: 1
 #feature traker paprameters
-max_cnt: 150           #200   # max feature number in feature tracking
-min_dist: 10                 # min distance between two features
-freq: 20              #10    # frequence (Hz) of publish tracking result. At least 10Hz for good estimation. If set 0, the frequence will be same as raw image
+max_cnt: 100           #200   # max feature number in feature tracking
+min_dist: 20                 # min distance between two features
+freq: 0              #10    # frequence (Hz) of publish tracking result. At least 10Hz for good estimation. If set 0, the frequence will be same as raw image
 F_threshold: 1.0              # ransac threshold (pixel)
 show_track: 1         #1     # publish tracking image as topic
 flow_back: 1             # perform forward and backward optical flow to improve feature tracking accuracy
@@ -48,8 +48,8 @@ min_fast_resp: 7              # min response of fast feature
 
 
 #optimization parameters
-max_solver_time: 0.04         # max solver itration time (ms), to guarantee real time
-max_num_iterations: 6      #8   # max solver itrations, to guarantee real time
+max_solver_time: 0.01         # max solver itration time (ms), to guarantee real time
+max_num_iterations: 8      #8   # max solver itrations, to guarantee real time
 keyframe_parallax: 10.0       # keyframe selection threshold (pixel)
 reproj_threshold: 5.0
 
