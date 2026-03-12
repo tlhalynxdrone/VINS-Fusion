@@ -29,7 +29,7 @@ body_T_cam0: !!opencv-matrix
            0.00637206, -0.99980589, -0.01864329, -0.00524668,  
             0.000, 0.000, 0.000, 1.000]
 
-multiple_thread: 0
+multiple_thread: 1
 # use_gpu: 1
 # use_gpu_acc_flow: 1
 
@@ -50,7 +50,7 @@ min_fast_resp: 7              # min response of fast feature
 
 #optimization parameters
 max_solver_time: 0.01         # max solver itration time (ms), to guarantee real time
-max_num_iterations: 8      #8   # max solver itrations, to guarantee real time
+max_num_iterations: 6      #8   # max solver itrations, to guarantee real time
 keyframe_parallax: 10.0       # keyframe selection threshold (pixel)
 reproj_threshold: 5.0
 
