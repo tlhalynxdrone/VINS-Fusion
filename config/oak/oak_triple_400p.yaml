@@ -29,18 +29,18 @@ body_T_cam0: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [  0.70362002, -0.0212456,   0.71025875,  0.04855011, 
-            0.71052802,  0.00936879, -0.70360654, -0.04577783,
-            0.00829428,  0.99973039,  0.02168767,  0.03223592,
+   data: [  0.7106793989792572, 0.7033904292066684, 0.01329270352261852, 0.011196382379388713, 
+            -0.01362174373944941, -0.005133141247616824, 0.999894043865863, -0.03362683465576112,
+            0.7033841340007452, -0.7107851679385202, 0.005933386438702615, -0.05461669349477938,
             0.0000000,   0.0000000,   0.0000000,   1.0000000]
 
 body_T_cam1: !!opencv-matrix            
    rows: 4
    cols: 4
    dt: d
-   data: [  -0.68982439,  0.01797333,  0.72375359,  0.05306647, 
-            0.72394639,  0.0079729,  0.68981016,  0.04574467,
-            0.00662777,  0.99980668, -0.01851163,  0.03027874,
+   data: [  -0.7074272159615166, 0.7065796657262073, -0.0170853767643247, -0.006118685974550217 
+            -0.021684398978072006, 0.0024642281770218266, 0.9997618288474768, -0.0342720354965197147,
+            0.7064534810997096, 0.707629213332613, 0.013578493302635358, -0.05717814884947567,
             0.0000000,   0.0000000,   0.0000000,   1.0000000]
 
 multiple_thread: 1
@@ -59,16 +59,16 @@ min_fast_resp: 7              # min response of fast feature
 
 
 #optimization parameters
-max_solver_time: 0.08        # max solver itration time (ms), to guarantee real time
+max_solver_time: 0.04        # max solver itration time (ms), to guarantee real time
 max_num_iterations: 8      #8   # max solver itrations, to guarantee real time
 keyframe_parallax: 10.0       # keyframe selection threshold (pixel)
 reproj_threshold: 5.0
 
 #imu parameters       The more accurate parameters you provide, the better performance
-acc_n: 0.0026609342          # accelerometer measurement noise standard deviation. #0.2
-gyr_n: 0.00012639084          # gyroscope measurement noise standard deviation.     #0.05
-acc_w: 4.5173966074015255e-04        # accelerometer bias random work noise standard deviation.  #0.02
-gyr_w: 6.975201600642303e-06        # gyroscope bias random work noise standard deviation.     #4.0e-5
+acc_n: 0.0025309522         # accelerometer measurement noise standard deviation. #0.2
+gyr_n: 0.00012633185          # gyroscope measurement noise standard deviation.     #0.05
+acc_w: 0.00020018773682178493        # accelerometer bias random work noise standard deviation.  #0.02
+gyr_w: 4.260517430489519e-06        # gyroscope bias random work noise standard deviation.     #4.0e-5
 g_norm: 9.805       # gravity magnitude
 
 #loop closure parameters
