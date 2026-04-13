@@ -8,12 +8,12 @@ num_of_cam: 2
 imu_topic: "/imu/data"
 
 image0_topic: "/oak/left/image_raw"
-image1_topic: "/oak/right/image_raw"
+image1_topic: "/oak/cam_d/image_raw"
 
 output_path: "/home/orin3/missions/path/"
 
 cam0_calib: "oak_mono_calib_400p_left.yaml"
-cam1_calib: "oak_mono_calib_400p_right.yaml"
+cam1_calib: "oak_mono_calib_400p_center.yaml"
 
 
 image_width: 640
@@ -47,14 +47,14 @@ body_T_cam1: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [ -0.70742722, -0.0216844,   0.70645348,  0.03532201, 
-            0.70657967,  0.00246423,  0.70762921,  0.04486872,
-          -0.01708538,  0.99976183,  0.01357849,  0.03493573,
+   data: [ -0.01593732, -0.02524441,  0.99955426,  0.04709485, 
+           0.99981417, -0.01124557,  0.01565745, -0.00347124,
+           0.0108453,   0.99961806,  0.02541894,  0.03534842,
             0.0000000,   0.0000000,   0.0000000,   1.0000000]
 
 multiple_thread: 1
 #feature traker paprameters
-max_cnt: 200           #200   # max feature number in feature tracking
+max_cnt: 100           #200   # max feature number in feature tracking
 min_dist: 20                 # min distance between two features
 freq: 10              #10    # frequence (Hz) of publish tracking result. At least 10Hz for good estimation. If set 0, the frequence will be same as raw image
 F_threshold: 1.0              # ransac threshold (pixel)

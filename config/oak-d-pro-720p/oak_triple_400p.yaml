@@ -20,7 +20,7 @@ image_width: 640
 image_height: 400
 
 # Extrinsic parameter between IMU and Camera.
-estimate_extrinsic: 0   # 0  Have an accurate extrinsic parameters. We will trust the following imu^R_cam, imu^T_cam, don't change it.
+estimate_extrinsic: 1   # 0  Have an accurate extrinsic parameters. We will trust the following imu^R_cam, imu^T_cam, don't change it.
                         # 1  Have an initial guess about extrinsic parameters. We will optimize around your initial guess.
                         # 2  Don't know anything about extrinsic parameters. You don't need to give R,T. We will try to calibrate it. Do some rotation movement at beginning.                        
 #If you choose 0 or 1, you should write down the following matrix.
@@ -29,32 +29,23 @@ body_T_cam0: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [ 0.7106794,  -0.01362174,  0.70338413,  0.03000142, 
-           0.70339043, -0.00513314, -0.71078517, -0.04686878,
-           0.0132927,   0.99989404,  0.00593339,  0.0337985,
-            0.0000000,   0.0000000,   0.0000000,   1.0000000]
-
-# body_T_cam0: !!opencv-matrix            
-#    rows: 4
-#    cols: 4
-#    dt: d
-#    data: [ -0.01593732, -0.02524441,  0.99955426,  0.04709485, 
-#             0.99981417, -0.01124557,  0.01565745, -0.00347124,
-#              0.0108453,   0.99961806,  0.02541894,  0.03534842,
-#             0.0000000,   0.0000000,   0.0000000,   1.0000000]
+   data: [ 0.05654165, -0.01885515,  0.99822218,  0.15095012, 
+           0.99801913, -0.02655547, -0.05703175, -0.19302697,
+            0.0275836,   0.9994695,  0.01731631,  0.01265254,
+            0.0000000,   0.0000000,   0.0000000,   1.00000]
 
 body_T_cam1: !!opencv-matrix            
    rows: 4
    cols: 4
    dt: d
-   data: [ -0.70742722, -0.0216844,   0.70645348,  0.03532201, 
-            0.70657967,  0.00246423,  0.70762921,  0.04486872,
-          -0.01708538,  0.99976183,  0.01357849,  0.03493573,
+   data: [ 0.99992286,  0.00171774, -0.01230174, -0.07511418, 
+           -0.00170193,  0.99999771,  0.00129491, -0.00005413,
+             0.01230394, -0.00127388,  0.99992349, -0.00044279,
             0.0000000,   0.0000000,   0.0000000,   1.0000000]
 
 multiple_thread: 1
 #feature traker paprameters
-max_cnt: 200           #200   # max feature number in feature tracking
+max_cnt: 100           #200   # max feature number in feature tracking
 min_dist: 20                 # min distance between two features
 freq: 10              #10    # frequence (Hz) of publish tracking result. At least 10Hz for good estimation. If set 0, the frequence will be same as raw image
 F_threshold: 1.0              # ransac threshold (pixel)
@@ -63,21 +54,21 @@ flow_back: 1             # perform forward and backward optical flow to improve 
 equalize: 1            #0     # if image is too dark or light, trun on equalize to find enough features
 fisheye: 0             #0     # if using fisheye, trun on it. A circle mask will be loaded to remove edge noisy points
 use_fast: 1                   # if it equals to 1, we extract and track fast feature, otherwise we use GFTT from opencv
-use_rgbd: 0          #0     # if using rgbd camera, turn on it. Depth residuals will be added to sliding window optimization and initialization
+use_rgbd: 1           #0     # if using rgbd camera, turn on it. Depth residuals will be added to sliding window optimization and initialization
 min_fast_resp: 7              # min response of fast feature
 
 
 #optimization parameters
-max_solver_time: 0.08        # max solver itration time (ms), to guarantee real time
-max_num_iterations: 5      #8   # max solver itrations, to guarantee real time
+max_solver_time: 0.02         # max solver itration time (ms), to guarantee real time
+max_num_iterations: 8      #8   # max solver itrations, to guarantee real time
 keyframe_parallax: 10.0       # keyframe selection threshold (pixel)
 reproj_threshold: 5.0
 
 #imu parameters       The more accurate parameters you provide, the better performance
-acc_n: 0.0025309522         # accelerometer measurement noise standard deviation. #0.2
-gyr_n: 0.00012633185          # gyroscope measurement noise standard deviation.     #0.05
-acc_w: 0.00020018773682178493        # accelerometer bias random work noise standard deviation.  #0.02
-gyr_w: 4.260517430489519e-06        # gyroscope bias random work noise standard deviation.     #4.0e-5
+acc_n: 0.0025309522        # accelerometer measurement noise standard deviation. #0.2
+gyr_n: 0.00012633185         # gyroscope measurement noise standard deviation.     #0.05
+acc_w: 0.00020018773682178493         # accelerometer bias random work noise standard deviation.  #0.02
+gyr_w: 4.260517430489519e-06       # gyroscope bias random work noise standard deviation.     #4.0e-5
 g_norm: 9.805       # gravity magnitude
 
 #loop closure parameters
@@ -89,7 +80,7 @@ save_image: 0                   # save image in pose graph for visualization pru
 
 #unsynchronization parameters
 estimate_td: 1                      # online estimate time offset between camera and imu
-td :0.007835061382050281                           # initial value of time offset. unit: s. readed image clock + td = real image clock (IMU clock)
+td :0.011002501083217145                           # initial value of time offset. unit: s. readed image clock + td = real image clock (IMU clock)
 
 #rolling shutter parameters
 # rolling_shutter: 0                      # 0: global shutter camera, 1: rolling shutter camera
