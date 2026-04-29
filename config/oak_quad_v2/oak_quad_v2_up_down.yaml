@@ -8,13 +8,12 @@ num_of_cam: 2
 imu_topic: "/imu/data"
 
 image0_topic: "/oak/left_w/image_raw"
-image1_topic: "/oak/right_w/image_raw"
 
 
 output_path: "/home/orin3/missions/path/"
 
 cam0_calib: "oak_mono_calib_400p_left_w.yaml"
-cam1_calib: "oak_mono_calib_400p_right_w.yaml"
+
 
 
 image_width: 640
@@ -30,26 +29,17 @@ body_T_cam0: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [-0.04871253,  0.50581858,  0.8612634,   0.07503623, 
-           0.99832959, -0.00216282,  0.05773513, -0.05079779,
-           0.03106626,  0.86263717, -0.5048683,   0.04336891,
-           0.0000000,   0.0000000,   0.0000000,   1.0000000]
-
-body_T_cam1: !!opencv-matrix
-   rows: 4
-   cols: 4
-   dt: d
-   data: [-0.02197069, -0.45607963,  0.88966773,  0.08056378, 
-           0.99934368, -0.03565449,  0.00640126, -0.05272942,
-           0.02880116,  0.88922446,  0.45656364,  0.12264734,
+   data: [-0.00012654,  0.49775143,  0.86731972,  0.06193075, 
+           0.99976653, -0.01867751,  0.01086482, -0.0013478,
+           0.02160735,  0.8671186,  -0.49763286,  0.01785286,
            0.0000000,   0.0000000,   0.0000000,   1.0000000]
 
 
 
 multiple_thread: 1
 #feature traker paprameters
-max_cnt: 75           #200   # max feature number in feature tracking
-min_dist: 30                 # min distance between two features
+max_cnt: 100           #200   # max feature number in feature tracking
+min_dist: 25                 # min distance between two features
 freq: 30              #10    # frequence (Hz) of publish tracking result. At least 10Hz for good estimation. If set 0, the frequence will be same as raw image
 F_threshold: 1.0              # ransac threshold (pixel)
 show_track: 1         #1     # publish tracking image as topic
@@ -62,7 +52,7 @@ min_fast_resp: 7              # min response of fast feature
 
 
 #optimization parameters
-max_solver_time: 0.04        # max solver itration time (ms), to guarantee real time
+max_solver_time: 0.02        # max solver itration time (ms), to guarantee real time
 max_num_iterations: 4      #8   # max solver itrations, to guarantee real time
 keyframe_parallax: 10.0       # keyframe selection threshold (pixel)
 reproj_threshold: 5.0

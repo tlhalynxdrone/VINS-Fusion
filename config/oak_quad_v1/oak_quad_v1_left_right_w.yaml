@@ -30,9 +30,9 @@ body_T_cam0: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [0.00664664,  0.00791461,  0.99994659,  0.07551904, 
-            0.99997733, -0.00113438, -0.00663787, -0.02637956,
-           0.00108179,  0.99996804, -0.00792197,  0.05948378,
+   data: [-0.02638432, -0.02133368,  0.99942421,  0.07831029, 
+           0.99958157,  0.01129366,  0.02662955, -0.07023773,
+          -0.01185526,  0.99970862,  0.02102678,  0.05080932,
             0.0000000,   0.0000000,   0.0000000,   1.0000000]
 
 
@@ -40,15 +40,15 @@ body_T_cam1: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [0.0191154,   0.0219112,   0.99957716,  0.07763795, 
-           0.99980168,  0.00516662, -0.01923294,  0.05384012,
-          -0.00558586,  0.99974657, -0.0218081,  0.06197275,
+   data: [-0.02427125, -0.03500309,  0.99909243,  0.07644959, 
+          0.9996793,  -0.00807329,  0.02400266,  0.00946341,
+          0.00722579,  0.99935459,  0.03518782,  0.05066975,
             0.0000000,   0.0000000,   0.0000000,   1.0000000]
 
 multiple_thread: 1
 #feature traker paprameters
-max_cnt: 75           #200   # max feature number in feature tracking
-min_dist: 30                 # min distance between two features
+max_cnt: 100           #200   # max feature number in feature tracking
+min_dist: 25                 # min distance between two features
 freq: 30              #10    # frequence (Hz) of publish tracking result. At least 10Hz for good estimation. If set 0, the frequence will be same as raw image
 F_threshold: 1.0              # ransac threshold (pixel)
 show_track: 1         #1     # publish tracking image as topic
@@ -61,7 +61,7 @@ min_fast_resp: 7              # min response of fast feature
 
 
 #optimization parameters
-max_solver_time: 0.02        # max solver itration time (ms), to guarantee real time
+max_solver_time: 0.04        # max solver itration time (ms), to guarantee real time
 max_num_iterations: 4      #8   # max solver itrations, to guarantee real time
 keyframe_parallax: 10.0       # keyframe selection threshold (pixel)
 reproj_threshold: 5.0

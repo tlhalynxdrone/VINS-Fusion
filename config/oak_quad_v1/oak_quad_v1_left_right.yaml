@@ -30,9 +30,9 @@ body_T_cam0: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [ 0.02768553,  0.50770655,  0.86108511,  0.05666168, 
-            0.99960895, -0.0174489,  -0.02185125, -0.04006665,
-           0.00393096,  0.86135335, -0.50799109,  0.00892585,
+   data: [-0.02321871,  0.47437405,  0.88001713,  0.06433509, 
+           0.99963299,  0.02330472,  0.01381227, -0.07074906,
+           -0.01395637,  0.88001486, -0.47474105,  0.01285114,
             0.0000000,   0.0000000,   0.0000000,   1.0000000]
 
 
@@ -40,14 +40,14 @@ body_T_cam1: !!opencv-matrix
    rows: 4
    cols: 4
    dt: d
-   data: [ 0.02583664,  0.4996536,   0.86583991,  0.05784754, 
-           0.99965156, -0.00822905, -0.0250808,   0.03854844,
-          -0.00540667,  0.86618622, -0.49969211,  0.00812022,
+   data: [-0.00357187,  0.48466104,  0.87469476,  0.06292071, 
+          0.99999362,  0.00164557,  0.00317175,  0.00878276,
+          0.00009785,  0.8747005,  -0.48466383,  0.01267389,
             0.0000000,   0.0000000,   0.0000000,   1.0000000]
 
 multiple_thread: 1
 #feature traker paprameters
-max_cnt: 75           #200   # max feature number in feature tracking
+max_cnt: 100           #200   # max feature number in feature tracking
 min_dist: 30                 # min distance between two features
 freq: 30              #10    # frequence (Hz) of publish tracking result. At least 10Hz for good estimation. If set 0, the frequence will be same as raw image
 F_threshold: 1.0              # ransac threshold (pixel)
@@ -61,7 +61,7 @@ min_fast_resp: 7              # min response of fast feature
 
 
 #optimization parameters
-max_solver_time: 0.02        # max solver itration time (ms), to guarantee real time
+max_solver_time: 0.04        # max solver itration time (ms), to guarantee real time
 max_num_iterations: 4      #8   # max solver itrations, to guarantee real time
 keyframe_parallax: 10.0       # keyframe selection threshold (pixel)
 reproj_threshold: 5.0

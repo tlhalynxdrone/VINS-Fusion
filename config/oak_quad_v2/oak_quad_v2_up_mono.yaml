@@ -13,7 +13,7 @@ image0_topic: "/oak/left_w/image_raw"
 output_path: "/home/orin3/missions/path/"
 
 cam0_calib: "oak_mono_calib_400p_left_w.yaml"
-
+cam1_calib: "oak_mono_calib_400p_rioak_monoak_mono_calib_400p_left_wo_calib_400p_left_wght.yaml"
 
 
 image_width: 640
